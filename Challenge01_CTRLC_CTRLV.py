@@ -8,7 +8,7 @@ __author__ = 'Phil Palmer'
 __version__ = '0.0.1'
 
 
-# List of strigns
+# Original List of strigns.
 s_list = [
     "the big red[CTRL+C] fox jumps over [CTRL+V] lazy dog.",
     "[CTRL+V]the tall oak tree towers over the lush green meadow.",
@@ -19,6 +19,7 @@ s_list = [
     "[CTRL+X]a fluffy white cloud drifts [CTRL+V][CTRL+C] across the sky, [CTRL+V]",
   ]
 
+# List for new/processed strings.
 s_list_new = []
 
 def string_func(s):
@@ -48,8 +49,10 @@ def string_func(s):
         d3_pos = s.find(d3)
     return(s)
 
+# Iterate through strings within list and append processed string to new list.
 for i, s in enumerate(s_list):
     s = string_func(s)
     s_list_new.append(s)
 
+# Print new list.
 print(s_list_new)
