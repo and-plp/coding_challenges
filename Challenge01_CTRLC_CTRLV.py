@@ -1,4 +1,14 @@
 
+"""
+Docstring:
+Coding Challenge: Control C, Control V
+"""
+
+__author__ = 'Phil Palmer'
+__version__ = '0.0.1'
+
+
+# List of strigns
 s_list = [
     "the big red[CTRL+C] fox jumps over [CTRL+V] lazy dog.",
     "[CTRL+V]the tall oak tree towers over the lush green meadow.",
@@ -12,6 +22,9 @@ s_list = [
 s_list_new = []
 
 def string_func(s):
+    """
+    Function to process [CTRL+C] [CTRL+V] [CTRL+X] commands within a string object
+    """
     d1 = "[CTRL+C]"
     d1_pos = s.find(d1)
     d2 = "[CTRL+V]"
