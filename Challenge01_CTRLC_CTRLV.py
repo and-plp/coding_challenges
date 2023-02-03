@@ -7,6 +7,7 @@ Coding Challenge: Control C, Control V
 __author__ = 'Phil Palmer'
 __version__ = '0.0.1'
 
+from pprint import pprint
 
 # Original List of strigns.
 s_list = [
@@ -42,6 +43,7 @@ def string_func(s):
             s = s.replace(d2,cp_val,1)
         elif d3_pos != -1:
             cp_val = s[0:d3_pos]
+            s = s[d3_pos:]
             s = s.replace(d3,'',1)
             s = s.replace(d2,cp_val,1)        
         d1_pos = s.find(d1)
@@ -55,4 +57,4 @@ for i, s in enumerate(s_list):
     s_list_new.append(s)
 
 # Print new list.
-print(s_list_new)
+pprint(s_list_new)
