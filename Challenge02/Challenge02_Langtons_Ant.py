@@ -36,6 +36,7 @@ def border_control(border_l,distance,x,y,return_loc):
         return 1
 
     else:
+        print("Border Breached")
         return 0
 
 def langtons(border_l,distance,x,y):
@@ -51,7 +52,6 @@ def langtons(border_l,distance,x,y):
 
     while border_status==1:
         if loc not in stamp_color_map or stamp_color_map[loc] == "white":
-            print(border_status)
             return_loc = adam.pos()
             border_status = border_control(border_l,distance,x,y,return_loc)
             adam.fillcolor("black")
@@ -61,7 +61,6 @@ def langtons(border_l,distance,x,y):
             adam.fd(distance)
             loc = adam_loc(adam)
         elif stamp_color_map[loc] == "black":
-            print(border_status)
             return_loc = adam.pos()
             border_status = border_control(border_l,distance,x,y,return_loc)
             adam.fillcolor("white")
