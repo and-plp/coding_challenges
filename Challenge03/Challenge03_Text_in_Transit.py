@@ -10,11 +10,24 @@ __version__ = '0.0.1'
 import curses
 import time
 
+width = 10
 scrollText = "This is my example text to scroll across the screen"
 
 def textScroller(screen):
     """Docstring: function to scroll text in curses wrapper"""    
-    screen.addstr(scrollText)
+    
+    scrollTextLength = len(scrollText)
+    
+    for char in range(scrollTextLength):
+        
+        for space in range(5):
+        
+            screen.addstr(scrollText[char + space])
+        
+        screen.refresh()
+
+        time.sleep(0.5)
+    
     screen.getch()
 
 curses.wrapper(textScroller)
