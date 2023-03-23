@@ -10,25 +10,28 @@ __version__ = '0.0.1'
 import curses
 import time
 
-width = 10
-scrollText = "This is my example text to scroll across the screen"
+interval = float(input("Scroll interval (Default = 0.1): ") or 0.1)
+scrollRepetitions = int(input("Scroll count (Default = 20): ") or 20)
+width = int(input("Text Width (Default = 25): ") or 25)
+
+scrollText = (input("Text/String to scroll (Default = 'LoremIpsum'):") or "LoremIpsum")
 
 def textScroller(screen):
     """Docstring: function to scroll text in curses wrapper"""    
-    
+    curses.curs_set(False)
     scrollTextLength = len(scrollText)
-    
-    for char in range(scrollTextLength):
-        
-        for space in range(5):
-        
-            screen.addstr(scrollText[char + space])
-        
+    for char in range((scrollRepetitions*scrollTextLength-width+1)):
+        for space in range(width):
+            curses.init_pair(1,curses.COLOR_BLUE,curses.COLOR_BLACK)
+            curses.init_pair(2,curses.COLOR_RED,curses.COLOR_BLACK)
+            BLUE_AND_BLACK = curses.color_pair(1)
+            RED_AND_BLACK = curses.color_pair(2)
+            screen.addstr(0,space,scrollText[((char + space) % scrollTextLength)],BLUE_AND_BLACK)
         screen.refresh()
-
-        time.sleep(0.5)
-    
+        time.sleep(interval)
+    screen.addstr(" Complete Press any key to exit ")
     screen.getch()
+
 
 curses.wrapper(textScroller)
 
