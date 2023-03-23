@@ -22,11 +22,7 @@ def textScroller(screen):
     scrollTextLength = len(scrollText)
     for char in range((scrollRepetitions*scrollTextLength-width+1)):
         for space in range(width):
-            curses.init_pair(1,curses.COLOR_BLUE,curses.COLOR_BLACK)
-            curses.init_pair(2,curses.COLOR_RED,curses.COLOR_BLACK)
-            BLUE_AND_BLACK = curses.color_pair(1)
-            RED_AND_BLACK = curses.color_pair(2)
-            screen.addstr(0,space,scrollText[((char + space) % scrollTextLength)],BLUE_AND_BLACK)
+            screen.addstr(0,space,scrollText[((char + space) % scrollTextLength)])
         screen.refresh()
         time.sleep(interval)
     screen.addstr(" Complete Press any key to exit ")
